@@ -102,4 +102,4 @@ app.delete('/api/logout', (req, res) => {
 
 
 //start server 
-app.listen(8082, () => {console.log('Server started on port 8082')});
+app.listen(8082, () => {console.log('Server started on port 8080')});

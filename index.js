@@ -7,16 +7,10 @@ const bcrypt = require('bcrypt');
 const session = require('express-session');
 const jwt = require('jsonwebtoken');
 const {conn} = require('./conn')
-
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
-app.use(cors({
-	origin: true,
-	methods: ["GET", "POST", "PUT", "DELETE"],
-	credentials: true,
-}));
-
+app.use(cors({ origin: true, methods: ["GET", "POST", "PUT", "DELETE"], credentials: true, }));
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(session({
@@ -24,11 +18,9 @@ app.use(session({
 	secret:'subscribe',
 	resave:false,
 	saveUninitialized:false,
-	cookie: {
-		expires: new Date(Date.now() + (30 * 86400 * 1000)),
-	},
-})
-);
+	cookie: { expires: new Date(Date.now() + (30 * 86400 * 1000)), }
+}));
+
 // parse application/json
 app.use(bodyParser.json());
 app.get("/", (req,res)=>{ res.json('hello from server') })
@@ -110,4 +102,4 @@ app.delete('/api/logout', (req, res) => {
 
 
 //start server 
-app.listen(8080, () => {console.log('Server started on port 8080')});
+app.listen(8082, () => {console.log('Server started on port 8082')});

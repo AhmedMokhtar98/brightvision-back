@@ -61,7 +61,6 @@ app.get("/api/isUserAuth", authenticateToken ,(req,res)=>{ })
 
 app.post("/api/auth", async(req,res)=>{
 	const sql =`SELECT * FROM users where username='${req.body.UserName}' `
-	console.log(sql);
 	conn.query(sql, async(err,result)=>{
 		if(err) throw err;
 		if(result.length>0){
